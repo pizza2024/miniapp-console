@@ -1,86 +1,37 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/create-user">CreateUser</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="common-layout">
+    <el-container>
+      <el-header class="border border-1">
+        <div class="flex items-center h-full -mx-[20px]">
+          <div class="flex items-center h-full justify-center w-[200px]">管理台</div>
+        </div>
+      </el-header>
+      <el-container>
+        <el-aside width="200px" class="border border-1 h-screen fixed top-0 left-0 pt-[58px]">
+          <div class="flex justify-center py-[20px]">Aside</div>
+        </el-aside>
+        <el-main class="ml-[200px]">
+          <el-form label-width="100px" >
+            <el-form-item label="username">
+              <el-input v-model="data.username"></el-input>
+            </el-form-item>
+            <el-form-item label="email">
+              <el-input v-model="data.email"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary">submit</el-button>
+            </el-form-item>
+          </el-form>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+<script setup>
+import { reactive } from "vue";
+const data = reactive({
+  username: '',
+  email: ''
+})
+</script>
